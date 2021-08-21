@@ -2,8 +2,11 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 
+import { gitHubApp } from './root/root';
+
 function App() {
-  const sayHello: string = 'Hello World!';
+  gitHubApp.getRepositoriesByUsername('jopashlyapos')
+    .then(response => console.log(response));
 
   return (
     <div className="App">
@@ -18,7 +21,6 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          {sayHello}
         </a>
       </header>
     </div>
