@@ -6,6 +6,8 @@ const paths = require('./paths');
 const chalk = require('react-dev-utils/chalk');
 const resolve = require('resolve');
 
+const removeWildcardPart = p => p.replace('/*', '');
+
 /**
  * Get additional module paths based on the baseUrl of a compilerOptions object.
  *
@@ -61,13 +63,17 @@ function getWebpackAliases(options = {}) {
     return {};
   }
 
-  const baseUrlResolved = path.resolve(paths.appPath, baseUrl);
-
-  if (path.relative(paths.appPath, baseUrlResolved) === '') {
-    return {
-      src: paths.appSrc,
-    };
-  }
+  let resultAlias = {src: paths.appSrc}
+    
+  return Object.assign({}, resultAlias,
+          Object.keys(options.paths).reduce(
+              (obj, alias) => {
+                  obj[removeWildcardPart(alias)] = 
+                    options.paths[alias].map(removeWildcardPart)[0]
+                  return obj
+              }, {}
+          )
+  )
 }
 
 /**
