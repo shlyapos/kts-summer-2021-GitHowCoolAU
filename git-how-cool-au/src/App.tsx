@@ -5,7 +5,7 @@ import './App.css';
 import { gitHubApp } from './root/root';
 
 function App() {
-  gitHubApp.getRepositoriesByUsername('jopashlyapos')
+  gitHubApp.getRepositoriesByUsername('shlyapos')
     .then(response => console.log(response));
 
   return (
