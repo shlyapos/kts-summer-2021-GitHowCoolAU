@@ -1,7 +1,7 @@
 import { ApiResponse, IApiStore, RequestParams, StatusHTTP } from "./types";
 
 export default class ApiStore implements IApiStore {
-    baseUrl: string = 'https://api.github.com/';
+    readonly baseUrl: string = 'https://api.github.com/';
 
     async request<SuccessT, ErrorT = any, ReqT = {}>(params: RequestParams<ReqT>): Promise<ApiResponse<SuccessT, ErrorT>> {
         try {
