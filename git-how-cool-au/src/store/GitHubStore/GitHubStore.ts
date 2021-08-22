@@ -1,6 +1,6 @@
 import { IGitHubStore } from "./types";
 
-import ApiStore from "@ApiStore/index";
+import ApiStore from "src/shared/store/ApiStore";
 import { RequestParams, HTTPMethod } from "src/shared/store/ApiStore/types";
 
 export default class GitHubStore implements IGitHubStore {
