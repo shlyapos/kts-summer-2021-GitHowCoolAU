@@ -23,8 +23,8 @@
     "paths": {
       "@root/*": ["src/root"],
       "@layouts/*": ["src/layouts"],
-      "@ApiStore/*": ["src/shared/store/ApiStore"],
-      "@GitHubStore/*": ["src/store/GitHubStore"]
+      "@shared/*": ["src/shared"],
+      "@store/*": ["src/store"]
     }
   },
   "include": [
