@@ -17,15 +17,15 @@ code {
 
 /* === Colors === */
 :root {
-  --background: #FFFFFF;
+  --colorBackground: #FFFFFF;
   --colorBorder: #D9D9D9;
-  --borderHoverAccent: rgba(182, 182, 182, 0.25);
+  --colorBorderHoverAccent: rgba(182, 182, 182, 0.25);
   --colorDefault: #000000;
   --colorHint: #7E7E7E;
-  --accent: #FF5555;
-  --accentHover: #FD8686;
-  --starAccent: #FF9432;
-  --linkHover: #208FBF;
+  --colorAccent: #FF5555;
+  --colorAccentHover: #FD8686;
+  --colorStarAccent: #FF9432;
+  --colorLinkHover: #208FBF;
   --colorDisable: #F9F9F9;
 }
 
@@ -52,7 +52,7 @@ body {
 
 
 .git-repo-list {
-  background-color: var(--background);
+  background-color: var(--colorBackground);
 
   column-gap: 12px;
   display: grid;
@@ -65,7 +65,7 @@ body {
 
 
 .git-repo-tile {
-  background-color: var(--background);
+  background-color: var(--colorBackground);
   border: 1px solid var(--colorBorder);
   border-radius: 6px;
   box-sizing: border-box;
@@ -83,11 +83,11 @@ body {
 }
 
 .git-repo-tile:hover {
-  box-shadow: 0px 2px 6px var(--borderHoverAccent);
+  box-shadow: 0px 2px 6px var(--colorBorderHoverAccent);
 }
 
 .git-repo-tile__avatar {
-  background-color: var(--accent);
+  background-color: var(--colorAccent);
   border-radius: 50%;
   color: white;
   display: flex;
@@ -138,7 +138,7 @@ body {
 }
 
 .git-repo-tile__org-link:hover {
-  color: var(--linkHover);
+  color: var(--colorLinkHover);
 }
 
 .git-repo-tile__rating {
@@ -165,7 +165,7 @@ body {
 }
 
 .input:focus {
-  border: 1px solid var(--accent);
+  border: 1px solid var(--colorAccent);
   outline: none;
 }
 
@@ -175,7 +175,7 @@ body {
 
 
 .search-button {
-  background-color: var(--accent);
+  background-color: var(--colorAccent);
   border: none;
   border-radius: 6px;
   cursor: pointer;
@@ -188,7 +188,7 @@ body {
 }
 
 .search-button:hover {
-  background-color: var(--accentHover);
+  background-color: var(--colorAccentHover);
 }
 
 .search-button:disabled {
