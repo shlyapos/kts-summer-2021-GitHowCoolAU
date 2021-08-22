@@ -8,11 +8,18 @@ export default class ApiStore implements IApiStore {
             const response = await fetch(`${this.baseUrl}${params.endpoint}`, params);
             const data = await response.json();
 
-            return {
-                success: true,
-                data: data,
-                status: StatusHTTP.success
-            };
+            if (data.message !== "Not Found")
+                return {
+                    success: true,
+                    data: data,
+                    status: StatusHTTP.success
+                };
+            else
+                return {
+                    success: false,
+                    data: data,
+                    status: StatusHTTP.notFound
+                };
         } catch (error: any) {
             return {
                 success: false,
