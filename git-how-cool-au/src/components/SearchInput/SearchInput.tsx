@@ -1,12 +1,14 @@
+import React from "react";
 import "./SearchInput.css";
 
 export type SearchInputProps = {
-    disabled: boolean;
-    placeholder: string;
+    value: string,
+    placeholder: string,
+    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
 };
 
-const SearchInput: React.FC<SearchInputProps> = ({ disabled, placeholder }) => {
-    return <input className="search-input" type="text" placeholder="Введите название организации"></input>;
+const SearchInput: React.FC<SearchInputProps> = ({ value, placeholder, onChange }) => {
+    return <input className="search-input" type="text" placeholder={placeholder} onChange={onChange} value={value} />;
 };
 
-export default SearchInput;
+export default React.memo(SearchInput);

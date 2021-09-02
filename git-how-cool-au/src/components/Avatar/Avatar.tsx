@@ -1,3 +1,5 @@
+import "./Avatar.css"
+
 export type AvatarProps = {
     src?: string,
     letter: string,
@@ -5,7 +7,13 @@ export type AvatarProps = {
 };
 
 const Avatar: React.FC<AvatarProps> = ({ src, letter, alt }) => {
-    return <div className="git-repo-tile__avatar">{letter}</div>;
+    return (
+        <>
+            {src ?
+                <img className="git-repo-tile__avatar" src={src} alt={alt} /> :
+                <div className="git-repo-tile__avatar">{letter.toUpperCase()}</div>}
+        </>
+    );
 };
 
 export default Avatar;

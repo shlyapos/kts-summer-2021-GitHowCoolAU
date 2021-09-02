@@ -5,9 +5,6 @@
     box-sizing: border-box;
     cursor: pointer;
 
-    display: flex;
-    justify-content: flex-start;
-
     padding: 12px;
 
     grid-column-start: 1;

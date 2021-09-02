@@ -1,4 +1,4 @@
-import RepoItem from "../RepoItem";
+import "./RepoTile.css"
 
 export type RepoTileProps = {
     onClick: (e: React.MouseEvent) => void;
