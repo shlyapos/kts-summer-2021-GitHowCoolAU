@@ -1,0 +1,11 @@
+.git-repo-list {
+    background-color: var(--colorBackground);
+
+    column-gap: 12px;
+    display: grid;
+    row-gap: 16px;
+
+    grid-template-columns: 295px 50px;
+    padding: 20px;
+    width: 397px;
+}
