@@ -37,6 +37,12 @@
     display: flex;
 }
 
+.repo-add-info__star {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
 .repo-add-info__rating {
     margin-left: var(--spacingUnit1) !important;
     margin-right: var(--spacingUnit5) !important;

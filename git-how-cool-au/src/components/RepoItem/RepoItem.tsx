@@ -23,7 +23,7 @@ const RepoItem: React.FC<RepoItemProps> = ({ name, author, authorUrl, avatarUrl,
                 </div>
 
                 <div className="repo-info__repo-add-info">
-                    {starIcon}
+                    <div className="repo-add-info__star">{starIcon}</div>
                     <p className="text repo-add-info__rating">{stars}</p>
 
                     <p className="text repo-add-info__update">{update}</p>
