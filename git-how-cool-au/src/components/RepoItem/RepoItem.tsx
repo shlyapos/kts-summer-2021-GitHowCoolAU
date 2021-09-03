@@ -18,7 +18,9 @@ const RepoItem: React.FC<RepoItemProps> = ({ name, author, authorUrl, avatarUrl,
 
             <div className="repo-item__repo-info">
                 <p className="text-header repo-info__header">{name}</p>
-                <a className="text repo-info__org-link" href={authorUrl} target="_blank">{author}</a>
+                <div className="repo-info__org-link">
+                    <a className="text org-link" href={authorUrl} target="_blank" rel="noreferrer">{author}</a>
+                </div>
 
                 <div className="repo-info__repo-add-info">
                     {starIcon}
