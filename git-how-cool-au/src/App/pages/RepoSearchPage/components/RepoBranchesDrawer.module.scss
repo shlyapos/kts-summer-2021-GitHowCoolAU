@@ -1,0 +1,25 @@
+@import '@styles/index.module.scss';
+@import '@styles/variables.module.scss';
+
+.drawer_branch_owner {
+    align-items: center;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.drawer_branch_list {
+    margin-top: $spacingUnit2;
+}
+
+.org_link {
+    display: inline-block;
+    margin: $spacingUnit1 0 !important;
+    height: auto;
+    text-align: left;
+
+    &_href:hover {
+        color: $colorLinkHover;
+    }
+}

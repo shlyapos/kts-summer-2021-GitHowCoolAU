@@ -1,4 +1,4 @@
-import "./RepoTile.css"
+import styles from "./RepoTile.module.scss"
 
 export type RepoTileProps = {
     onClick: (e: React.MouseEvent) => void;
@@ -7,7 +7,7 @@ export type RepoTileProps = {
 
 const RepoTile: React.FC<RepoTileProps> = ({ onClick, item }) => {
     return (
-        <div className="git-repo-tile" onClick={onClick}>
+        <div className={`${styles.git_repo_tile}`} onClick={onClick}>
             {item}
         </div>
     );

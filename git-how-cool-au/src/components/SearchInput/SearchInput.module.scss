@@ -1,0 +1,28 @@
+@import '@styles/index.module.scss';
+@import '@styles/variables.module.scss';
+
+.search_input {
+    border: 1px solid $colorBorder;
+    border-radius: 6px;
+    box-sizing: border-box;
+    color: $colorDefault;
+
+    padding-left: $spacingUnit3;
+
+    width: 295px;
+    height: 50px;
+
+    &::placeholder {
+        color: $colorHint;
+        font-size: 14px;
+    }
+
+    &:focus {
+        border: 1px solid $colorAccent;
+        outline: none;
+    }
+
+    &:disabled {
+        background-color: $colorDisable;
+    }
+}

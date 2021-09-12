@@ -1,7 +1,4 @@
-import React from "react";
-
-import "./RepoSearchPage.css"
-import "./components/RepoBranchesDrawer"
+import React, { createContext } from "react";
 
 import RepoItem, { RepoItemProps } from "@components/RepoItem";
 import RepoTile from "@components/RepoTile";
@@ -12,20 +9,33 @@ import StarIcon from "@components/StarIcon";
 import { gitHubApp } from "@root/root";
 import { ApiResponse } from "@shared/store/ApiStore";
 import { formatDate } from "@utils/DateProcessing"
+import { Link, useHistory } from "react-router-dom";
 
 import RepoBranchesDrawer from "./components/RepoBranchesDrawer";
+import styles from "./RepoSearchPage.module.scss";
 
 type RepoListItem = {
     id: number,
     props: RepoItemProps
 };
 
+const ReposContext = createContext<{ repoList: null | RepoListItem[], isLoading: boolean, load: () => void }>({
+    repoList: null,
+    isLoading: false,
+    load: () => { }
+});
+
+const ReposContextProvider = ReposContext.Provider;
+
 const RepoSearchPage = () => {
     const [currentInputValue, setInputValue] = React.useState<string>("");
     const [isLoading, setIsLoading] = React.useState<boolean>(false);
     const [repoList, setRepoList] = React.useState<null | RepoListItem[]>(null);
+    const [chosenRepo, setChosenRepo] = React.useState<boolean>(false);
 
-    const [chosenRepo, setChosenRepo] = React.useState<null | RepoItemProps>(null);
+    const history = useHistory();
+
+    console.log(styles)
 
     // Отслеживание изменений в поле ввода, при изменении содержимого очищается список репозиториев
     const onChangeInputHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -36,9 +46,9 @@ const RepoSearchPage = () => {
     };
 
     // Обновление списка репозиториев при клике на кнопку поиска
-    const onClicSearchButtonHandler = async (e: React.MouseEvent) => {
+    const onClickSearchButtonHandler = async (e: React.MouseEvent) => {
         if (currentInputValue !== '') {
-            const response: ApiResponse<any, any> = await gitHubApp.getRepo(currentInputValue);
+            const response: ApiResponse<any, any> = await gitHubApp.getRepos(currentInputValue);
 
             if (response.success) {
                 let newRepoList: RepoListItem[] = [];
@@ -61,42 +71,48 @@ const RepoSearchPage = () => {
                 }
 
                 setRepoList(newRepoList);
+                setIsLoading(true);
             }
         }
     };
 
     // События для chosenRepo
-    const onClickRepoTileHandler = (repoItem: RepoItemProps) => setChosenRepo(repoItem);
-    const onCloseRepoBranchesDrawer = () => setChosenRepo(null);
+    const onClickRepoTileHandler = (repoItem: RepoItemProps) => setChosenRepo(true);
+    const onCloseRepoBranchesDrawer = () => {
+        setChosenRepo(false);
+        history.goBack();
+    }
 
     // ???
     const onLoad = () => setIsLoading(false);
 
     return (
         <div>
-            <div className="git-repo-list">
+            <div className={`${styles.git_repo_list}`}>
                 <SearchInput value={currentInputValue} placeholder={"Введите автора или организацию"} onChange={onChangeInputHandler} />
-                <SearchButton isDisabled={false} children={<SearchIcon />} onClick={onClicSearchButtonHandler} />
-
-                {repoList && repoList.map(item =>
-                    <RepoTile
-                        key={item.id}
-                        onClick={(e: React.MouseEvent) => onClickRepoTileHandler(item.props)}
-                        item={
-                            <RepoItem
-                                name={item.props.name}
-                                author={item.props.author}
-                                authorUrl={item.props.authorUrl}
-                                avatarUrl={item.props.avatarUrl}
-                                starIcon={item.props.starIcon}
-                                stars={item.props.stars}
-                                update={item.props.update}
-                            />}
-                    />)}
+                <SearchButton isDisabled={false} children={<SearchIcon />} onClick={onClickSearchButtonHandler} />
+                {repoList && isLoading && repoList.map(item =>
+                    <Link className={`${styles.repo_tile__link}`} key={item.id} to={`/repos/${item.props.author}/${item.props.name}`}>
+                        <RepoTile
+                            key={item.id}
+                            onClick={(e: React.MouseEvent) => onClickRepoTileHandler(item.props)}
+                            item={
+                                <RepoItem
+                                    name={item.props.name}
+                                    author={item.props.author}
+                                    authorUrl={item.props.authorUrl}
+                                    avatarUrl={item.props.avatarUrl}
+                                    starIcon={item.props.starIcon}
+                                    stars={item.props.stars}
+                                    update={item.props.update}
+                                />}
+                        />
+                    </Link>
+                )}
             </div>
 
-            {chosenRepo && <RepoBranchesDrawer selectedRepo={chosenRepo} onClose={onCloseRepoBranchesDrawer} />}
-        </div>
+            {chosenRepo && <RepoBranchesDrawer onClose={onCloseRepoBranchesDrawer} />}
+        </div >
     );
 };
 

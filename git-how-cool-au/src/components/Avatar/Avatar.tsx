@@ -1,4 +1,4 @@
-import "./Avatar.css"
+import styles from "./Avatar.module.scss"
 
 export type AvatarProps = {
     src?: string,
@@ -10,8 +10,8 @@ const Avatar: React.FC<AvatarProps> = ({ src, letter, alt }) => {
     return (
         <>
             {src ?
-                <img className="git-repo-tile__avatar" src={src} alt={alt} /> :
-                <div className="git-repo-tile__avatar">{letter.toUpperCase()}</div>}
+                <img className={`${styles.git_repo_tile__avatar}`} src={src} alt={alt} /> :
+                <div className={`${styles.git_repo_tile__avatar}`}>{letter.toUpperCase()}</div>}
         </>
     );
 };

@@ -1,0 +1,23 @@
+@import '@styles/index.module.scss';
+@import '@styles/variables.module.scss';
+
+.search_button {
+    background-color: $colorAccent;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+
+    outline: none;
+    padding: 0;
+
+    width: 50px;
+    height: 50px;
+
+    &:hover {
+        background-color: $colorAccentHover;
+    }
+
+    &:disabled {
+        background-color: $colorBorder;
+    }
+}

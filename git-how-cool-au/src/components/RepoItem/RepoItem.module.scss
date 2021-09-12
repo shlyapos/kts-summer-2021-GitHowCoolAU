@@ -1,20 +1,23 @@
-.git-repo-tile__repo-item {
+@import '@styles/index.module.scss';
+@import '@styles/variables.module.scss';
+
+.git_repo_tile__repo_item {
     display: flex;
     justify-content: flex-start;
 }
 
-.repo-item__repo-info {
+.repo_item__repo_info {
     display: flex;
     flex-direction: column;
     justify-content: center;
 
-    margin-left: var(--spacingUnit3);
+    margin-left: $spacingUnit3;
     vertical-align: middle;
 
     max-width: 225px;
 }
 
-.repo-info__header {
+.repo_info__header {
     font-size: 16px;
     text-align: left;
     text-overflow: ellipsis;
@@ -22,28 +25,28 @@
     white-space: nowrap;
 }
 
-.repo-info__org-link {
+.repo_info__org_link {
     display: inline-block;
-    margin: var(--spacingUnit1) 0 !important;
+    margin: $spacingUnit1 0 !important;
     height: auto;
     text-align: left;
 }
 
-.org-link:hover {
-    color: var(--colorLinkHover);
+.org_link:hover {
+    color: $colorLinkHover;
 }
 
-.repo-info__repo-add-info {
+.repo_info__repo_add_info {
     display: flex;
 }
 
-.repo-add-info__star {
+.repo_add_info__star {
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
-.repo-add-info__rating {
-    margin-left: var(--spacingUnit1) !important;
-    margin-right: var(--spacingUnit5) !important;
+.repo_add_info__rating {
+    margin-left: $spacingUnit1 !important;
+    margin-right: $spacingUnit5 !important;
 }

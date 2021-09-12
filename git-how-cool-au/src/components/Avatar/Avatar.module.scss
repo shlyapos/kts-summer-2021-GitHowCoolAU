@@ -1,5 +1,7 @@
-.git-repo-tile__avatar {
-    background-color: var(--colorAccent);
+@import '@styles/variables.module.scss';
+
+.git_repo_tile__avatar {
+    background-color: $colorAccent;
     border-radius: 50%;
     color: white;
     display: flex;

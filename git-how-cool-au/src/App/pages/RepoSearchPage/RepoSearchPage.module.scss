@@ -1,0 +1,21 @@
+@import '@styles/index.module.scss';
+@import '@styles/variables.module.scss';
+
+.git_repo_list {
+    background-color: $colorBackground;
+    border: 1px solid $colorBorder;
+    border-radius: 6px;
+    box-sizing: border-box;
+
+    column-gap: $spacingUnit3;
+    display: grid;
+    row-gap: $spacingUnit4;
+
+    grid-template-columns: 295px 50px;
+    padding: $spacingUnit5;
+    width: 397px;
+}
+
+.repo_tile__link {
+    grid-column-start: 1;
+}
