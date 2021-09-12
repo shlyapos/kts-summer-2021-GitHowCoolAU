@@ -6,7 +6,7 @@ import { IGitHubStore } from "./types";
 export default class GitHubStore implements IGitHubStore {
     private apiStore: ApiStore = new ApiStore();
 
-    async getRepo(username: string): Promise<ApiResponse<any, any>> {
+    async getRepos(username: string): Promise<ApiResponse<any, any>> {
         const requestBody: RequestParams<string> = {
             method: HTTPMethod.get,
             endpoint: `users/${username}/repos`,
@@ -27,6 +27,19 @@ export default class GitHubStore implements IGitHubStore {
                 'Content-Type': 'application/json'
             },
             data: `/${username}/${reponame}`
+        };
+
+        return await this.apiStore.request(requestBody);
+    }
+
+    async getUser(username: string): Promise<ApiResponse<any, any>> {
+        const requestBody: RequestParams<string> = {
+            method: HTTPMethod.get,
+            endpoint: `users/${username}`,
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            data: `${username}`
         };
 
         return await this.apiStore.request(requestBody);
