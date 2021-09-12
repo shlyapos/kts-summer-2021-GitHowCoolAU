@@ -35,8 +35,6 @@ const RepoSearchPage = () => {
 
     const history = useHistory();
 
-    console.log(styles)
-
     // Отслеживание изменений в поле ввода, при изменении содержимого очищается список репозиториев
     const onChangeInputHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
         setInputValue(e.target.value);
