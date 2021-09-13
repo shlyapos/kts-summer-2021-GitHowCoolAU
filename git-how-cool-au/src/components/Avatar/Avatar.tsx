@@ -1,3 +1,4 @@
+import React from "react";
 import "./Avatar.css"
 
 export type AvatarProps = {
@@ -6,14 +7,8 @@ export type AvatarProps = {
     alt?: string
 };
 
-const Avatar: React.FC<AvatarProps> = ({ src, letter, alt }) => {
-    return (
-        <>
-            {src ?
-                <img className="git-repo-tile__avatar" src={src} alt={alt} /> :
-                <div className="git-repo-tile__avatar">{letter.toUpperCase()}</div>}
-        </>
-    );
+const Avatar: React.FC<AvatarProps> = ({ src='none', letter, alt='user' }) => {
+    return <div className="git-repo-tile__avatar" title={alt} style={{backgroundImage: `url(${src})`}}>{src === 'none' && letter.toUpperCase()}</div>
 };
 
-export default Avatar;
+export default React.memo(Avatar);
