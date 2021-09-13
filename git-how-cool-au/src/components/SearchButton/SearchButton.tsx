@@ -15,4 +15,4 @@ const SearchButton: React.FC<SearchButtonProps> = ({ isDisabled, children, onCli
     );
 };
 
-export default SearchButton;
+export default React.memo(SearchButton);
