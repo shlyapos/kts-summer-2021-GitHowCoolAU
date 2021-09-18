@@ -1,0 +1,18 @@
+.git-repo-tile {
+    background-color: var(--colorBackground);
+    border: 1px solid var(--colorBorder);
+    border-radius: 6px;
+    box-sizing: border-box;
+    cursor: pointer;
+
+    padding: var(--spacingUnit3);
+
+    grid-column-start: 1;
+
+    width: 357px;
+    height: 104px;
+}
+
+.git-repo-tile:hover {
+    box-shadow: 0px 2px 6px var(--colorBorderHoverAccent);
+}

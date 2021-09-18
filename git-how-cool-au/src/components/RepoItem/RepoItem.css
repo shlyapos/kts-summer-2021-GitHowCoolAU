@@ -1,0 +1,49 @@
+.git-repo-tile__repo-item {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.repo-item__repo-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    margin-left: var(--spacingUnit3);
+    vertical-align: middle;
+
+    max-width: 225px;
+}
+
+.repo-info__header {
+    font-size: 16px;
+    text-align: left;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.repo-info__org-link {
+    display: inline-block;
+    margin: var(--spacingUnit1) 0 !important;
+    height: auto;
+    text-align: left;
+}
+
+.org-link:hover {
+    color: var(--colorLinkHover);
+}
+
+.repo-info__repo-add-info {
+    display: flex;
+}
+
+.repo-add-info__star {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.repo-add-info__rating {
+    margin-left: var(--spacingUnit1) !important;
+    margin-right: var(--spacingUnit5) !important;
+}

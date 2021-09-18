@@ -1,0 +1,11 @@
+.drawer-branch-owner {
+    align-items: center;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.drawer-branch-list {
+    margin-top: var(--spacingUnit2);
+}
