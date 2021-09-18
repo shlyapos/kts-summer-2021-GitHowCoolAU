@@ -1,0 +1,24 @@
+@import '@styles/variables';
+
+.search_input {
+    @include shape(295px, 50px, 6px);
+
+    border: 1px solid $colorBorder;
+    box-sizing: border-box;
+    color: $colorDefault;
+
+    padding-left: $spacingUnit3;
+}
+
+.search_input::placeholder {
+    @include text-simple(14px);
+}
+
+.search_input:focus {
+    border: 1px solid $colorAccent;
+    outline: none;
+}
+
+.search_input:disabled {
+    background-color: $colorDisable;
+}

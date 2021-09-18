@@ -5,17 +5,3 @@ body {
   padding: 16px;
   margin: 0;
 }
-
-.text-header {
-  color: var(--colorDefault);
-  font-weight: 700;
-  margin: 0;
-}
-
-.text {
-  color: var(--colorHint);
-  font-size: 14px;
-  font-weight: 400;
-
-  margin: 0;
-}
