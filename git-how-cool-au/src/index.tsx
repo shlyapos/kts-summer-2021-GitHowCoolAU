@@ -3,7 +3,7 @@ import React from 'react';
 import App from "@app/App";
 import ReactDOM from 'react-dom';
 import './styles/index.css';
-import './styles/variables.css';
+import './styles/variables.scss';
 
 import reportWebVitals from './reportWebVitals';
 
