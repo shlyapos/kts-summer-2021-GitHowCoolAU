@@ -2,7 +2,8 @@ import React from "react";
 
 import Avatar from "@components/Avatar";
 import StarIcon from "@components/StarIcon";
-import "./RepoItem.css";
+
+import styles from "./RepoItem.module.scss";
 
 export type RepoItemProps = {
     name: string,
@@ -15,22 +16,22 @@ export type RepoItemProps = {
 
 const RepoItem: React.FC<RepoItemProps> = ({ name, owner, ownerUrl, avatarUrl, stars, update }) => {
     return (
-        <div className="git-repo-tile__repo-item">
+        <div className={`${styles.repo_item}`}>
             <Avatar src={avatarUrl} letter={name[0]} alt={owner} />
 
-            <div className="repo-item__repo-info">
-                <p className="text-header repo-info__header">{name}</p>
-                <div className="repo-info__org-link">
-                    <a className="text org-link" href={ownerUrl} target="_blank" rel="noreferrer">{owner}</a>
+            <div className={`${styles.repo_info}`}>
+                <p className={`${styles.info_header}`}>{name}</p>
+                <div className={`${styles.info_org_link}`}>
+                    <a className={`${styles.org_link}`} href={ownerUrl} target="_blank" rel="noreferrer">{owner}</a>
                 </div>
 
-                <div className="repo-info__repo-add-info">
-                    <div className="repo-add-info__star">
+                <div className={`${styles.add_info}`}>
+                    <div className={`${styles.stars}`}>
                         <StarIcon />
                     </div>
 
-                    <p className="text repo-add-info__rating">{stars}</p>
-                    <p className="text repo-add-info__update">{update}</p>
+                    <p className={`${styles.rating}`}>{stars}</p>
+                    <p className={`${styles.update}`}>{update}</p>
                 </div>
             </div>
         </div>

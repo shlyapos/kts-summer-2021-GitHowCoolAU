@@ -1,13 +1,13 @@
-import './Loader.css';
+import styles from './Loader.module.scss';
 
 type LoaderProps = {
     children: React.ReactNode
 };
 
-const Loader: React.FC<LoaderProps> = ({children}) => {
+const Loader: React.FC<LoaderProps> = ({ children }) => {
     return (
-        <div className='loader'>
-            <div className='loader-wrapper'>
+        <div className={`${styles.loader}`}>
+            <div className={`${styles.loader_wrapper}`}>
                 {children}
             </div>
         </div>

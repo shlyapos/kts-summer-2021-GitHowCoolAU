@@ -1,5 +1,6 @@
 import React from "react";
-import "./Avatar.css"
+
+import styles from "./Avatar.module.scss";
 
 export type AvatarProps = {
     src?: string,
@@ -7,8 +8,8 @@ export type AvatarProps = {
     alt?: string
 };
 
-const Avatar: React.FC<AvatarProps> = ({ src='none', letter, alt='user' }) => {
-    return <div className="git-repo-tile__avatar" title={alt} style={{backgroundImage: `url(${src})`}}>{src === 'none' && letter.toUpperCase()}</div>
+const Avatar: React.FC<AvatarProps> = ({ src = 'none', letter, alt = 'user' }) => {
+    return <div className={`${styles.avatar}`} title={alt} style={{ backgroundImage: `url(${src})` }}> {src === 'none' && letter.toUpperCase()}</div >
 };
 
 export default React.memo(Avatar);
