@@ -1,7 +1,8 @@
+@import './variables.scss';
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
 body {
   font-family: Roboto;
-  padding: 16px;
+  padding: $spacingUnit4;
   margin: 0;
 }
