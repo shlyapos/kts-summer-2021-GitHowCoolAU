@@ -46,3 +46,7 @@ export interface IApiStore {
     // TODO: реализовать в ApiStore
     request<SuccessT, ErrorT = any, ReqT = {}>(params: RequestParams<ReqT>): Promise<ApiResponse<SuccessT, ErrorT>>;
 };
+
+export type ResponseError = {
+    message: string
+};
