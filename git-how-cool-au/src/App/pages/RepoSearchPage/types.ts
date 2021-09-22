@@ -1,10 +1,5 @@
 import { RepoItemProps } from "@components/RepoItem";
 
-export type RepoListItem = {
-    id: string,
-    props: RepoItemProps
-};
-
 export type ReposInfoResponseSuccess = {
     id: string,
     name: string,
@@ -19,11 +14,4 @@ export type ReposInfoResponseSuccess = {
 
 export type ReposInfoResponseError = {
     message: string
-};
-
-export type RepoListContext = {
-    list: null | RepoListItem[],
-    isLoading: boolean,
-    load: (state: boolean) => void,
-    isAllLoad: boolean
 };
