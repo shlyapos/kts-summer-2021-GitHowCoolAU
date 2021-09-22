@@ -1,3 +1,5 @@
+import React from 'react';
+
 import styles from './Loader.module.scss';
 
 type LoaderProps = {
@@ -6,12 +8,12 @@ type LoaderProps = {
 
 const Loader: React.FC<LoaderProps> = ({ children }) => {
     return (
-        <div className={`${styles.loader}`}>
-            <div className={`${styles.loader_wrapper}`}>
+        <div className={styles.loader}>
+            <div className={styles.loader_wrapper}>
                 {children}
             </div>
         </div>
     );
 };
 
-export default Loader;
+export default React.memo(Loader);

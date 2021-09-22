@@ -10,7 +10,7 @@ export type SearchButtonProps = {
 
 const SearchButton: React.FC<SearchButtonProps> = ({ isDisabled, children, onClick }) => {
     return (
-        <button className={`${styles.search_button}`} disabled={isDisabled} onClick={onClick}>
+        <button className={styles.search_button} disabled={isDisabled} onClick={onClick}>
             {children}
         </button>
     );

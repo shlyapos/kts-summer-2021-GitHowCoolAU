@@ -59,19 +59,19 @@ const RepoBranchesDrawer: React.FC<RepoBranchesDrawerProps> = ({ visible, onClos
     return (
         <Drawer title={name} visible={isVisible} onClose={onCloseHandler}>
             <div>
-                <h2 className={`${styles.text_header}`}>Owner</h2>
+                <h2 className={styles.text_header}>Owner</h2>
                 {repoOwner &&
-                    <div className={`${styles.branch_owner}`}>
+                    <div className={styles.branch_owner}>
                         <Avatar src={repoOwner?.avatar_url} letter={repoOwner?.login[0]} alt={owner} />
-                        <a className={`${styles.org_link}`} href={repoOwner.html_url} target="_blank" rel="noreferrer">{repoOwner?.login}</a>
+                        <a className={styles.org_link} href={repoOwner.html_url} target="_blank" rel="noreferrer">{repoOwner?.login}</a>
 
-                        <h3 className={`${styles.owner_name}`}>{repoOwner?.name}</h3>
+                        <h3 className={styles.owner_name}>{repoOwner?.name}</h3>
                     </div>
                 }
 
-                <h2 className={`${styles.text_header}`}>Branches</h2>
-                <div className={`${styles.branch_list}`}>
-                    {branchList && branchList.map(item => <p key={item.id}>{item.name}</p>)}
+                <h2 className={styles.text_header}>Branches</h2>
+                <div className={styles.branch_list}>
+                    {branchList && branchList?.map(item => <p key={item.id}>{item.name}</p>)}
                 </div>
             </div>
         </Drawer>

@@ -9,8 +9,9 @@ export type RepoTileProps = {
 
 const RepoTile: React.FC<RepoTileProps> = ({ onClick, item }) => {
     return (
-        <div className={`${styles.repo_tile}`} onClick={onClick}>
-            <RepoItem name={item.name} owner={item.owner} ownerUrl={item.ownerUrl} avatarUrl={item.avatarUrl} stars={item.stars} update={item.update} />
+        <div className={styles.repo_tile} onClick={onClick}>
+            <RepoItem name={item.name} owner={item.owner} ownerUrl={item.ownerUrl}
+                avatarUrl={item.avatarUrl} stars={item.stars} update={item.update} />
         </div>
     );
 };
