@@ -1,6 +1,6 @@
 import { RepoItemProps } from "@components/RepoItem";
 
-export type ReposInfoResponseSuccess = {
+export type RepoResponse = {
     id: string,
     name: string,
     owner: {

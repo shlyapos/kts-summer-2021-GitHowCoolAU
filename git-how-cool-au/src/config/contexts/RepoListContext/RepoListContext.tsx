@@ -5,14 +5,14 @@ import { RepoListItem } from "./types";
 type RepoListContext = {
     list: null | RepoListItem[],
     isLoading: boolean,
-    load: (state: boolean) => void,
+    load: () => void,
     isAllLoad: boolean
 };
 
 const ReposListContext = React.createContext<RepoListContext>({
     list: null,
     isLoading: true,
-    load: (state: boolean) => { },
+    load: () => { },
     isAllLoad: false
 });
 

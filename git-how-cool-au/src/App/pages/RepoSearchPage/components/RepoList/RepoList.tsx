@@ -12,24 +12,22 @@ import styles from './RepoList.module.scss';
 type RepoListProps = {
     inputValue: string,
     onChangeInput: (e: React.ChangeEvent<HTMLInputElement>) => void,
-    searchOnClick: () => void,
-    onScroll: () => void,
     tileOnClick: (ownerLogin: string, repoName: string) => void
 };
 
-const RepoList: React.FC<RepoListProps> = ({ inputValue, onChangeInput, searchOnClick, onScroll, tileOnClick }) => {
+const RepoList: React.FC<RepoListProps> = ({ inputValue, onChangeInput, tileOnClick }) => {
     const repoListContext = useRepoListContext();
 
     return (
         <div className={`${styles.repo_search_list}`}>
             <SearchInput value={inputValue} placeholder="Введите автора или организацию" onChange={onChangeInput} />
-            <SearchButton isDisabled={repoListContext.isLoading} onClick={searchOnClick}><SearchIcon /></SearchButton>
+            <SearchButton isDisabled={repoListContext.isLoading} onClick={repoListContext.load}><SearchIcon /></SearchButton>
 
             {repoListContext.list && repoListContext.list?.length !== 0 &&
                 <InfiniteScroll
                     dataLength={repoListContext.list?.length}
                     className={`${styles.repo_list}`}
-                    next={onScroll}
+                    next={repoListContext.load}
                     hasMore={!repoListContext.isAllLoad}
                     loader={false}
                 >
