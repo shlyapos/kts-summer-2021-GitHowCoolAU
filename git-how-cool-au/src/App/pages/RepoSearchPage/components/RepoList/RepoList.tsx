@@ -4,15 +4,15 @@ import RepoTile from '@components/RepoTile';
 import SearchButton from '@components/SearchButton';
 import SearchIcon from '@components/SearchIcon';
 import SearchInput from '@components/SearchInput';
+import { useRepoListContext } from '@config/contexts/RepoListContext';
 import InfiniteScroll from 'react-infinite-scroll-component';
 
-import { useRepoListContext } from '../../RepoSearchPage';
 import styles from './RepoList.module.scss';
 
 type RepoListProps = {
     inputValue: string,
     onChangeInput: (e: React.ChangeEvent<HTMLInputElement>) => void,
-    searchOnClick: (e: React.MouseEvent) => void,
+    searchOnClick: () => void,
     onScroll: () => void,
     tileOnClick: (ownerLogin: string, repoName: string) => void
 };

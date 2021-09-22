@@ -1,7 +1,9 @@
-import React, { createContext, useContext } from "react";
+import React from "react";
 
 import Loader from "@components/Loader";
 import LoadIcon from "@components/LoadIcon";
+import { RepoListProvider } from "@config/contexts/RepoListContext";
+import { RepoListItem } from "@config/contexts/RepoListContext/types";
 import { gitHubApp } from "@root/root";
 import { ApiResponse } from "@shared/store/ApiStore";
 import { formatDate } from "@utils/DateProcessing"
@@ -9,18 +11,8 @@ import { useHistory } from "react-router-dom";
 
 import RepoBranchesDrawer from "./components/RepoBranchesDrawer/index";
 import RepoList from "./components/RepoList";
-// import styles from "./RepoSearchPage.module.scss"
-import { RepoListContext, RepoListItem, ReposInfoResponseError, ReposInfoResponseSuccess } from "./types";
+import { ReposInfoResponseError, ReposInfoResponseSuccess } from "./types";
 
-const ReposListContext = createContext<RepoListContext>({
-    list: null,
-    isLoading: true,
-    load: (state: boolean) => { },
-    isAllLoad: false
-});
-
-export const useRepoListContext = () => useContext(ReposListContext);
-const RepoListProvider = ReposListContext.Provider;
 
 const RepoSearchPage: React.FC = () => {
     const stepPerPage = 10;
@@ -87,15 +79,6 @@ const RepoSearchPage: React.FC = () => {
 
     const load = (state: boolean) => setIsLoading(state);
 
-    // Обновление списка репозиториев при клике на кнопку поиска
-    const onClickSearchButtonHandler = (e: React.MouseEvent) => {
-        fetchRepos();
-    };
-
-    const onScrollNext = () => {
-        fetchRepos();
-    }
-
     const increaseRepoIndex = () => setRepoCurrentIndex(repoCurrentIndex + 1);
 
     // События для chosenRepo
@@ -113,7 +96,13 @@ const RepoSearchPage: React.FC = () => {
         <RepoListProvider value={{ list: repoList, isLoading: isLoading, load: load, isAllLoad: isAllLoad }}>
             {isLoading && <Loader><LoadIcon /></Loader>}
 
-            <RepoList inputValue={currentInputValue} tileOnClick={onClickRepoTileHandler} searchOnClick={onClickSearchButtonHandler} onScroll={onScrollNext} onChangeInput={onChangeInputHandler} />
+            <RepoList
+                inputValue={currentInputValue}
+                tileOnClick={onClickRepoTileHandler}
+                searchOnClick={fetchRepos}
+                onScroll={fetchRepos}
+                onChangeInput={onChangeInputHandler}
+            />
             <RepoBranchesDrawer visible={chosenRepo} onClose={onCloseRepoBranchesDrawer} />
         </RepoListProvider>
     );
