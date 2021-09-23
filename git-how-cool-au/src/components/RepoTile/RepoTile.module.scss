@@ -1,0 +1,18 @@
+@import '@styles/variables';
+
+.repo_tile {
+    @include shape(357px, 104px, 6px);
+
+    background-color: $colorBackground;
+    border: 1px solid $colorBorder;
+    box-sizing: border-box;
+    cursor: pointer;
+
+    padding: $spacingUnit3;
+
+    grid-column-start: 1;
+}
+
+.repo_tile:hover {
+    box-shadow: 0px 2px 6px $colorBorderHoverAccent;
+}

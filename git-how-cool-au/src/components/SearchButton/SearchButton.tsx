@@ -1,5 +1,6 @@
 import React from "react";
-import "./SearchButton.css";
+
+import styles from "./SearchButton.module.scss";
 
 export type SearchButtonProps = {
     isDisabled: boolean,
@@ -9,7 +10,7 @@ export type SearchButtonProps = {
 
 const SearchButton: React.FC<SearchButtonProps> = ({ isDisabled, children, onClick }) => {
     return (
-        <button className="search-button" disabled={isDisabled} onClick={onClick}>
+        <button className={styles.search_button} disabled={isDisabled} onClick={onClick}>
             {children}
         </button>
     );

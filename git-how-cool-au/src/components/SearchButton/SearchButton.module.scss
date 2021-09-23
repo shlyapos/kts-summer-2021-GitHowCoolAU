@@ -1,0 +1,24 @@
+@import '@styles/variables';
+
+.search_button {
+    @include sqare(50px, 6px);
+
+    align-items: center;
+    background-color: $colorAccent;
+    border: none;
+
+    cursor: pointer;
+    display: flex;
+
+    outline: none;
+    padding: 0;
+    justify-content: center;
+}
+
+.search_button:hover {
+    background-color: $colorAccentHover;
+}
+
+.search_button:disabled {
+    background-color: $colorBorder;
+}

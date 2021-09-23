@@ -1,0 +1,34 @@
+@import '@styles/variables';
+
+.text_header {
+    @include text-header();
+}
+
+.branch_owner {
+    align-items: center;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.branch_list {
+    margin-top: $spacingUnit2;
+}
+
+.org_link {
+    @include text-simple();
+
+    display: inline-block;
+    margin: $spacingUnit1 0 !important;
+    height: auto;
+    text-align: left;
+}
+
+.org_link:hover {
+    color: $colorLinkHover;
+}
+
+.owner_name {
+    @include text-simple(18px);
+}

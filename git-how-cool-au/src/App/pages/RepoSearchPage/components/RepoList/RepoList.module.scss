@@ -1,0 +1,29 @@
+@import '@styles/variables';
+
+.repo_search_list {
+    @include shape(397px, auto, $border-radius: 6px);
+
+    background-color: $colorBackground;
+    border: 1px solid $colorBorder;
+    box-sizing: border-box;
+
+    column-gap: $spacingUnit3;
+    display: grid;
+    row-gap: $spacingUnit4;
+
+    grid-template-columns: 295px 50px;
+    padding: $spacingUnit5;
+}
+
+.repo_list {
+    @include shape(397px, 96vh);
+
+    column-gap: $spacingUnit3;
+    display: grid;
+    row-gap: $spacingUnit4;
+
+    grid-template-columns: 295px 50px;
+    grid-column-start: 1;
+
+    height: 100%;
+}

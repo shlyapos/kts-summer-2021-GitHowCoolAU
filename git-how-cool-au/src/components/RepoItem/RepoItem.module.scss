@@ -1,0 +1,62 @@
+@import '@styles/variables';
+
+.repo_item {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.repo_info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    margin-left: $spacingUnit3;
+    vertical-align: middle;
+
+    max-width: 225px;
+}
+
+.info_header {
+    @include text-header(16px, left);
+
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.info_org_link {
+    @include text-simple($align: left);
+
+    display: inline-block;
+    margin: $spacingUnit1 0 !important;
+    height: auto;
+}
+
+.org_link {
+    color: $colorHint;
+}
+
+.org_link:hover {
+    color: $colorLinkHover;
+}
+
+.add_info {
+    display: flex;
+}
+
+.stars {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.rating {
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: $spacingUnit1;
+    margin-right: $spacingUnit5;
+}
+
+.update {
+    margin: 0;
+}

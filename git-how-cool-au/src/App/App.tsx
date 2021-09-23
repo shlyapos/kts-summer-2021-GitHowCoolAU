@@ -1,10 +1,20 @@
 import './App.css';
 
+import RepoSearchRoute from '@config/routes/RepoSearchRoute';
+import { BrowserRouter, Switch, Redirect } from 'react-router-dom';
+
 import RepoSearchPage from './pages/RepoSearchPage';
 
-function App() {
+const App = () => {
   return (
-    <div className="App"><RepoSearchPage /></div>
+    <div className="App">
+      <BrowserRouter>
+        <Switch>
+          <RepoSearchRoute path={'/repos/:owner?/:name?'}><RepoSearchPage /></RepoSearchRoute>
+          <Redirect to='/repos' />
+        </Switch>
+      </ BrowserRouter>
+    </div>
   );
 }
 

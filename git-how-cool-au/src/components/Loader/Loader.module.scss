@@ -1,0 +1,31 @@
+@import '@styles/variables';
+
+@keyframes spin {
+    from {
+        transform: rotate(360deg);
+    }
+
+    to {
+        transform: rotate(0deg);
+    }
+}
+
+.loader {
+    @include sqare(80px, 50%);
+    align-items: center;
+
+    background-color: $colorBackground;
+    box-shadow: 0px 2px 6px $colorBorderHoverAccent;
+
+    display: flex;
+    justify-content: center;
+
+    position: sticky;
+    top: 50%;
+    left: 50%;
+}
+
+.loader_wrapper {
+    @include sqare(40px);
+    animation: spin 1s linear infinite;
+}
