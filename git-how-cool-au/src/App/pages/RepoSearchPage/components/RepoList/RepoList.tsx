@@ -19,15 +19,15 @@ const RepoList: React.FC<RepoListProps> = ({ inputValue, onChangeInput, tileOnCl
     const repoListContext = useRepoListContext();
 
     return (
-        <div className={`${styles.repo_search_list}`}>
+        <div className={styles.repo_search_list}>
             <SearchInput value={inputValue} placeholder="Введите автора или организацию" onChange={onChangeInput} />
-            <SearchButton isDisabled={repoListContext.isLoading} onClick={repoListContext.load}><SearchIcon /></SearchButton>
+            <SearchButton isDisabled={repoListContext.isLoading} onClick={() => repoListContext.load(inputValue)}><SearchIcon /></SearchButton>
 
             {repoListContext.list && repoListContext.list?.length !== 0 &&
                 <InfiniteScroll
                     dataLength={repoListContext.list?.length}
-                    className={`${styles.repo_list}`}
-                    next={repoListContext.load}
+                    className={styles.repo_list}
+                    next={() => repoListContext.load(inputValue)}
                     hasMore={!repoListContext.isAllLoad}
                     loader={false}
                 >

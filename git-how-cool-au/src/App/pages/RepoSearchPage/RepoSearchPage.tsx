@@ -13,7 +13,6 @@ import RepoBranchesDrawer from "./components/RepoBranchesDrawer/index";
 import RepoList from "./components/RepoList";
 import { RepoResponse } from "./types";
 
-
 const RepoSearchPage: React.FC = () => {
     const stepPerPage = 10;
 
