@@ -11,7 +11,7 @@
 }
 
 .loader {
-    @include sqare(80px, 50%);
+    @include square(80px, 50%);
     align-items: center;
 
     background-color: $colorBackground;
@@ -21,11 +21,16 @@
     justify-content: center;
 
     position: sticky;
-    top: 50%;
+    top: calc(50% - 40px);
     left: 50%;
-}
 
-.loader_wrapper {
-    @include sqare(40px);
-    animation: spin 1s linear infinite;
+    &_wrapper {
+        @include square(40px);
+        animation: spin 1s linear infinite;
+
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content:center;
+    }
 }

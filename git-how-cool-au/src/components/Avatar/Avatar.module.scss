@@ -1,7 +1,7 @@
 @import '@styles/variables.scss';
 
 .avatar {
-    @include sqare(80px, 50%);
+    @include square(80px, 50%);
     @include text-header(40px, center, #FFFFFF);
 
     background-color: $colorAccent;

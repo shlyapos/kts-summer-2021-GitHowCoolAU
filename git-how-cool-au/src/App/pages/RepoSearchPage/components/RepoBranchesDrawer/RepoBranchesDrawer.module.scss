@@ -32,3 +32,9 @@
 .owner_name {
     @include text-simple(18px);
 }
+
+.loader {
+    @include square(40px, 50%);
+    position: absolute;
+    left: calc(50% - 20px);
+}

@@ -1,7 +1,7 @@
 @import '@styles/variables';
 
 .search_button {
-    @include sqare(50px, 6px);
+    @include square(50px, 6px);
 
     align-items: center;
     background-color: $colorAccent;
