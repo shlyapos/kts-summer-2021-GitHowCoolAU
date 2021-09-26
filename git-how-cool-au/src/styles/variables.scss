@@ -17,7 +17,7 @@ $spacingUnit3: 12px;
 $spacingUnit4: 16px;
 $spacingUnit5: 20px;
 
-@mixin sqare($size, $border-radius: none) {
+@mixin square($size, $border-radius: none) {
     width: $size;
     height: $size;
 
