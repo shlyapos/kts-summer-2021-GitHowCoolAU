@@ -5,6 +5,7 @@ import SearchButton from '@components/SearchButton';
 import SearchIcon from '@components/SearchIcon';
 import SearchInput from '@components/SearchInput';
 import { useRepoListContext } from '@config/contexts/RepoListContext';
+import { observer } from 'mobx-react-lite';
 import InfiniteScroll from 'react-infinite-scroll-component';
 
 import styles from './RepoList.module.scss';
@@ -12,27 +13,33 @@ import styles from './RepoList.module.scss';
 type RepoListProps = {
     inputValue: string,
     onChangeInput: (e: React.ChangeEvent<HTMLInputElement>) => void,
+    searchOnClick: () => void,
     tileOnClick: (ownerLogin: string, repoName: string) => void
 };
 
-const RepoList: React.FC<RepoListProps> = ({ inputValue, onChangeInput, tileOnClick }) => {
-    const repoListContext = useRepoListContext();
+const RepoList: React.FC<RepoListProps> = ({ inputValue, onChangeInput, searchOnClick, tileOnClick }) => {
+    const {repoListStore} = useRepoListContext();
 
-    return (
+    return(
         <div className={styles.repo_search_list}>
             <SearchInput value={inputValue} placeholder="Введите автора или организацию" onChange={onChangeInput} />
-            <SearchButton isDisabled={repoListContext.isLoading} onClick={() => repoListContext.load(inputValue)}><SearchIcon /></SearchButton>
 
-            {repoListContext.list && repoListContext.list?.length !== 0 &&
+            <SearchButton 
+                isDisabled={repoListStore ? repoListStore.meta === 'loading' : true} 
+                onClick={searchOnClick}>
+                    <SearchIcon />
+            </SearchButton>
+
+            {repoListStore && !!repoListStore?.list.length &&
                 <InfiniteScroll
-                    dataLength={repoListContext.list?.length}
-                    className={styles.repo_list}
-                    next={() => repoListContext.load(inputValue)}
-                    hasMore={!repoListContext.isAllLoad}
                     loader={false}
+                    next={searchOnClick}
+                    className={styles.repo_list}
+                    hasMore={repoListStore && !repoListStore.isAllLoaded}
+                    dataLength={repoListStore ? repoListStore.list.length : 0}
                 >
-                    {repoListContext.list?.map(item =>
-                        <RepoTile key={item.id} onClick={(e: React.MouseEvent) => tileOnClick(item.props.owner, item.props.name)} item={item.props} />
+                    {repoListStore && repoListStore.list.map(item => 
+                        <RepoTile key={item.id} onClick={() => tileOnClick(item.owner.login, item.name)} item={item} />
                     )}
                 </InfiniteScroll>
             }
@@ -40,4 +47,4 @@ const RepoList: React.FC<RepoListProps> = ({ inputValue, onChangeInput, tileOnCl
     );
 };
 
-export default RepoList;
+export default observer(RepoList);
