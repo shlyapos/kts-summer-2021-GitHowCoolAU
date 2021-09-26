@@ -1,14 +1,19 @@
 import React from 'react';
 
 import App from "@app/App";
-import ReactDOM from 'react-dom';
 import '@styles/index.scss';
+import ReactDOM from 'react-dom';
+import { BrowserRouter } from 'react-router-dom';
 
 import reportWebVitals from './reportWebVitals';
+import '@config/configureMobX';
+
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
 );
