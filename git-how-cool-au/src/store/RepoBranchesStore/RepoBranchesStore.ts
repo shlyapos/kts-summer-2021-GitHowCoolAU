@@ -62,6 +62,8 @@ export default class RepoBranchesStore implements ILocalStore {
 
                 this._list = tempList;
                 this._meta = Meta.success;
+
+                return;
             } catch (err) {
                 this._meta = Meta.error;
                 this._list = getInitialCollectionModel();

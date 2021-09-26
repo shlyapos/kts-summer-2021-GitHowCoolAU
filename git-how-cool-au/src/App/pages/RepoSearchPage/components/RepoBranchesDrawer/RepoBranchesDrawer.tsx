@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 
+import ErrorWindow from "@components/ErrorWindow";
 import Loader from "@components/Loader";
 import LoadIcon from "@components/LoadIcon";
 import RepoBranchesStore from "@store/RepoBranchesStore";
@@ -37,19 +38,23 @@ const RepoBranchesDrawer: React.FC<RepoBranchesDrawerProps> = ({ visible, onClos
     }, [owner, name, repoBranchStore])
 
     return (
-        <Drawer 
-            title={name} 
-            visible={isVisible} 
-            onClose={onCloseDrawer} 
-            placement={"left"}
-        >
-            {repoBranchStore.meta === Meta.loading && <Loader classStyle={styles.loader}><LoadIcon size={24}/></Loader>}
-            
-            <h2 className={styles.text_header}>Branches</h2>
-            <div className={styles.branch_list}>
-                {repoBranchStore.list.map((item, index) => <p key={index}>{item.name}</p>)}
-            </div>
-        </Drawer>
+        <div>
+            {repoBranchStore.meta === Meta.error ? <ErrorWindow /> :
+                <Drawer 
+                    title={name} 
+                    visible={isVisible} 
+                    onClose={onCloseDrawer} 
+                    placement={"left"}
+                >
+                    {repoBranchStore.meta === Meta.loading && <Loader classStyle={styles.loader}><LoadIcon size={24}/></Loader>}
+                    
+                    <h2 className={styles.text_header}>Branches</h2>
+                    <div className={styles.branch_list}>
+                        {repoBranchStore.list.map((item, index) => <p key={index}>{item.name}</p>)}
+                    </div>
+                </Drawer>
+            }
+        </div>
     );
 };
 

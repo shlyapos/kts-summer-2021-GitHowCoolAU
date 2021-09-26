@@ -1,5 +1,6 @@
 import React from "react";
 
+import ErrorWindow from "@components/ErrorWindow";
 import Loader from "@components/Loader";
 import LoadIcon from "@components/LoadIcon";
 import { RepoListContext, useRepoListContextData } from "@config/contexts/RepoListContext";
@@ -45,19 +46,21 @@ const RepoSearchPage: React.FC = () => {
     return (
         <div>
             {repoListStore && repoListStore.meta === Meta.loading && <Loader><LoadIcon /></Loader>}
-            
-            <RepoListContext.Provider value={{repoListStore: repoListStore}}>
-                <div>
-                    <RepoList
-                        inputValue={currentInputValue}
-                        searchOnClick={searchOnClick}
-                        onChangeInput={onChangeInputHandler} 
-                        tileOnClick={redirectToDrawer}
-                    />
+            {repoListStore && repoListStore.meta === Meta.error ? 
+                <ErrorWindow /> :
+                <RepoListContext.Provider value={{repoListStore: repoListStore}}>
+                    <div>
+                        <RepoList
+                            inputValue={currentInputValue}
+                            searchOnClick={searchOnClick}
+                            onChangeInput={onChangeInputHandler} 
+                            tileOnClick={redirectToDrawer}
+                        />
 
-                    <RepoBranchesDrawer visible={chosenRepo} onClose={redirectFromDrawer} />
-                </div>
-            </RepoListContext.Provider>
+                        <RepoBranchesDrawer visible={chosenRepo} onClose={redirectFromDrawer} />
+                    </div>
+                </RepoListContext.Provider>
+            }
         </div>
     );
 };
