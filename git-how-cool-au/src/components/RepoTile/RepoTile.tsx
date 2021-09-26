@@ -1,17 +1,17 @@
-import RepoItem, { RepoItemProps } from "@components/RepoItem";
+import RepoItem from "@components/RepoItem";
+import { GitHubRepoItemModel } from "@store/models/GitHub";
 
 import styles from "./RepoTile.module.scss";
 
 export type RepoTileProps = {
     onClick: (e: React.MouseEvent) => void;
-    item: RepoItemProps;
+    item: GitHubRepoItemModel;
 };
 
 const RepoTile: React.FC<RepoTileProps> = ({ onClick, item }) => {
     return (
         <div className={styles.repo_tile} onClick={onClick}>
-            <RepoItem name={item.name} owner={item.owner} ownerUrl={item.ownerUrl}
-                avatarUrl={item.avatarUrl} stars={item.stars} update={item.update} />
+            <RepoItem id={item.id} name={item.name} owner={item.owner} stargazersCount={item.stargazersCount} pushedAt={item.pushedAt} />
         </div>
     );
 };
