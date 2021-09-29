@@ -1,1 +1,5 @@
-# kts-summer-2021-GitHowCoolAU
+# KTS-Summer-2021-GitHowCoolAU
+
+```
+Summer practice in the KTS (2021)
+```
