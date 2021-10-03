@@ -1,4 +1,4 @@
-import ApiStore, { ApiResponse, RequestParams } from "@store/RootStore/ApiStore";
+import ApiStore, { ApiResponse, RequestParams } from "store/RootStore/ApiStore";
 
 import QueryParamsStore from "./QueryParamsStore";
 

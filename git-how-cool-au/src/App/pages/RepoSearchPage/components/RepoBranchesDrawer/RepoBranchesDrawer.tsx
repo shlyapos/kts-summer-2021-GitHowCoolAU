@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 
-import ErrorWindow from "@components/ErrorWindow";
-import Loader from "@components/Loader";
-import LoadIcon from "@components/LoadIcon";
-import RepoBranchesStore from "@store/RepoBranchesStore";
-import { Meta } from "@utils/meta";
-import { useLocalStore } from "@utils/useLocalStore";
+import ErrorWindow from "components/ErrorWindow";
+import Loader from "components/Loader";
+import LoadIcon from "components/LoadIcon";
+import RepoBranchesStore from "store/RepoBranchesStore";
+import { Meta } from "utils/meta";
+import { useLocalStore } from "utils/useLocalStore";
 import { Drawer } from "antd";
 import 'antd/dist/antd.css';
 import { observer } from "mobx-react-lite";

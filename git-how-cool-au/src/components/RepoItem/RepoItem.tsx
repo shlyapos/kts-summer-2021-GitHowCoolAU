@@ -1,8 +1,8 @@
 import React from "react";
 
-import Avatar from "@components/Avatar";
-import StarIcon from "@components/StarIcon";
-import { GitHubRepoItemModel } from "@store/models/GitHub";
+import Avatar from "components/Avatar";
+import StarIcon from "components/StarIcon";
+import { GitHubRepoItemModel } from "store/models/GitHub";
 
 import styles from "./RepoItem.module.scss";
 

@@ -1,10 +1,9 @@
-import './App.css';
-
-import RepoSearchRoute from '@config/routes/RepoSearchRoute';
-import { useQueryParamsStoreInit } from '@store/RootStore/hooks/UseQueryParamsStoreInit';
+import RepoSearchRoute from 'config/routes/RepoSearchRoute';
+import { useQueryParamsStoreInit } from 'store/RootStore/hooks/UseQueryParamsStoreInit';
 import { Switch, Redirect } from 'react-router-dom';
 
 import RepoSearchPage from './pages/RepoSearchPage';
+import React from 'react';
 
 
 const App = () => {

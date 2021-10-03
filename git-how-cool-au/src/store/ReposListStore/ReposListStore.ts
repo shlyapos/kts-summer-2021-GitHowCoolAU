@@ -1,9 +1,9 @@
-import { GitHubRepoItemApi, GitHubRepoItemModel, normalizeGitHubRepoItem } from "@store/models/GitHub";
-import { CollectionModel, getInitialCollectionModel } from "@store/models/shared/collection";
-import rootStore from "@store/RootStore";
-import { ApiResponse, HTTPMethod, ResponseError } from "@store/RootStore/ApiStore";
-import { Meta } from "@utils/meta";
-import { ILocalStore } from "@utils/useLocalStore";
+import { GitHubRepoItemApi, GitHubRepoItemModel, normalizeGitHubRepoItem } from "store/models/GitHub";
+import { CollectionModel, getInitialCollectionModel } from "store/models/shared/collection";
+import rootStore from "store/RootStore";
+import { ApiResponse, HTTPMethod, ResponseError } from "store/RootStore/ApiStore";
+import { Meta } from "utils/meta";
+import { ILocalStore } from "utils/useLocalStore";
 import { action, computed, IReactionDisposer, makeObservable, observable, reaction, runInAction } from "mobx";
 
 import { GitHubGetRepoParams } from "./types";
@@ -90,7 +90,7 @@ export default class ReposListStore implements ILocalStore {
     private readonly _qpReaction: IReactionDisposer = reaction(
         () => rootStore.query.getParams('search'),
         (search) => {
-            console.log(search);
+            // console.log(search);
         }
     );
 

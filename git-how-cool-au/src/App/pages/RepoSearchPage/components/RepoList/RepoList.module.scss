@@ -1,4 +1,4 @@
-@import '@styles/variables';
+@import 'styles/variables';
 
 .repo_search_list {
     @include shape(397px, auto, $border-radius: 6px);

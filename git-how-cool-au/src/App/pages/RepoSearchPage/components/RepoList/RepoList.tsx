@@ -1,10 +1,10 @@
 import React from 'react';
 
-import RepoTile from '@components/RepoTile';
-import SearchButton from '@components/SearchButton';
-import SearchIcon from '@components/SearchIcon';
-import SearchInput from '@components/SearchInput';
-import { useRepoListContext } from '@config/contexts/RepoListContext';
+import RepoTile from 'components/RepoTile';
+import SearchButton from 'components/SearchButton';
+import SearchIcon from 'components/SearchIcon';
+import SearchInput from 'components/SearchInput';
+import { useRepoListContext } from 'config/contexts/RepoListContext';
 import { observer } from 'mobx-react-lite';
 import InfiniteScroll from 'react-infinite-scroll-component';
 

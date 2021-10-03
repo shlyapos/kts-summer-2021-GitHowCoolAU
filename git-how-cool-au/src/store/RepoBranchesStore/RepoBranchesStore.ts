@@ -1,9 +1,9 @@
-import { GitHubRepoBranchApi, GitHubRepoBranchModel, normalizeGitHubRepoBranch } from "@store/models/GitHub";
-import { CollectionModel, getInitialCollectionModel } from "@store/models/shared/collection";
-import rootStore from "@store/RootStore";
-import { ApiResponse, HTTPMethod, ResponseError } from "@store/RootStore/ApiStore";
-import { Meta } from "@utils/meta";
-import { ILocalStore } from "@utils/useLocalStore";
+import { GitHubRepoBranchApi, GitHubRepoBranchModel, normalizeGitHubRepoBranch } from "store/models/GitHub";
+import { CollectionModel, getInitialCollectionModel } from "store/models/shared/collection";
+import rootStore from "store/RootStore";
+import { ApiResponse, HTTPMethod, ResponseError } from "store/RootStore/ApiStore";
+import { Meta } from "utils/meta";
+import { ILocalStore } from "utils/useLocalStore";
 import { action, makeObservable, observable, runInAction } from "mobx";
 
 import { GitHubGetBranchParams } from "./types";

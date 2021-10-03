@@ -1,7 +1,7 @@
 import React from "react";
 
-import ReposListStore from "@store/ReposListStore";
-import { useLocalStore } from "@utils/useLocalStore";
+import ReposListStore from "store/ReposListStore";
+import { useLocalStore } from "utils/useLocalStore";
 
 type RepoListContextData = {
     repoListStore: undefined | ReposListStore,

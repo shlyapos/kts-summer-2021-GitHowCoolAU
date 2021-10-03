@@ -1,5 +1,6 @@
-import RepoItem from "@components/RepoItem";
-import { GitHubRepoItemModel } from "@store/models/GitHub";
+import RepoItem from "components/RepoItem";
+import React from "react";
+import { GitHubRepoItemModel } from "store/models/GitHub";
 
 import styles from "./RepoTile.module.scss";
 

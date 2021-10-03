@@ -1,10 +1,10 @@
 import React from "react";
 
-import ErrorWindow from "@components/ErrorWindow";
-import Loader from "@components/Loader";
-import LoadIcon from "@components/LoadIcon";
-import { RepoListContext, useRepoListContextData } from "@config/contexts/RepoListContext";
-import { Meta } from "@utils/meta";
+import ErrorWindow from "components/ErrorWindow";
+import Loader from "components/Loader";
+import LoadIcon from "components/LoadIcon";
+import { RepoListContext, useRepoListContextData } from "config/contexts/RepoListContext";
+import { Meta } from "utils/meta";
 import { observer } from "mobx-react-lite";
 import { useHistory } from "react-router";
 
