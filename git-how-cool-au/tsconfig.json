@@ -6,8 +6,7 @@
       "config": ["config"],
       "styles": ["styles"],
       "utils": ["utils"],
-      "pages": ["pages"],
-      "app": ["App"],
+      "pages": ["App/pages"],
       "shared": ["shared"],
       "store": ["store"],
       "root": ["root"]
@@ -23,7 +22,7 @@
     "moduleResolution": "node",
     "jsx": "react",
     "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
+    "allowSyntheticDefaultImports": true
   },
   "include": ["src/**/*", "declarations.d.ts"],
   "exclude": ["node_modules"]

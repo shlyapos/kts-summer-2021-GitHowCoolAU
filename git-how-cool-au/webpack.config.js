@@ -69,8 +69,7 @@ module.exports = {
             config: path.join(srcPath, "config"),
             styles: path.join(srcPath, "styles"),
             utils: path.join(srcPath, "utils"),
-            pages: path.join(srcPath, "pages/App"),
-            app: path.join(srcPath, "App"),
+            pages: path.join(srcPath, "App/pages"),
             shared: path.join(srcPath, "shared"),
             store: path.join(srcPath, "store"),
             root: path.join(srcPath, "root")
