@@ -1,19 +1,19 @@
 import React from "react";
 
 export interface ILocalStore {
-    destroy(): void;
+  destroy(): void;
 }
 
 export const useLocalStore = <T extends ILocalStore>(creator: () => T): T => {
-    const container = React.useRef<null | T>(null);
+  const container = React.useRef<null | T>(null);
 
-    if (container.current === null) {
-        container.current = creator();
-    }
+  if (container.current === null) {
+    container.current = creator();
+  }
 
-    React.useEffect(() => {
-        container.current?.destroy();
-    }, []);
+  React.useEffect(() => {
+    container.current?.destroy();
+  }, []);
 
-    return container.current;
+  return container.current;
 };

@@ -1,4 +1,4 @@
 export type GitHubGetBranchParams = {
-    owner: string,
-    repo: string
+  owner: string;
+  repo: string;
 };

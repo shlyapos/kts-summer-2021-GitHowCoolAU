@@ -1,40 +1,40 @@
-@import 'styles/variables';
+@import "styles/variables";
 
 .text_header {
-    @include text-header();
+  @include text-header();
 }
 
 .branch_owner {
-    align-items: center;
+  align-items: center;
 
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .branch_list {
-    margin-top: $spacingUnit2;
+  margin-top: $spacingUnit2;
 }
 
 .org_link {
-    @include text-simple();
+  @include text-simple();
 
-    display: inline-block;
-    margin: $spacingUnit1 0 !important;
-    height: auto;
-    text-align: left;
+  display: inline-block;
+  margin: $spacingUnit1 0 !important;
+  height: auto;
+  text-align: left;
 }
 
 .org_link:hover {
-    color: $colorLinkHover;
+  color: $colorLinkHover;
 }
 
 .owner_name {
-    @include text-simple(18px);
+  @include text-simple(18px);
 }
 
 .loader {
-    @include square(40px, 50%);
-    position: absolute;
-    left: calc(50% - 20px);
+  @include square(40px, 50%);
+  position: absolute;
+  left: calc(50% - 20px);
 }

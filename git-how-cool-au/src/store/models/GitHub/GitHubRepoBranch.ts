@@ -1,11 +1,13 @@
 export type GitHubRepoBranchApi = {
-    name: string
+  name: string;
 };
 
 export type GitHubRepoBranchModel = {
-    name: string
+  name: string;
 };
 
-export const normalizeGitHubRepoBranch = (from: GitHubRepoBranchApi): GitHubRepoBranchModel => ({
-    name: from.name
+export const normalizeGitHubRepoBranch = (
+  from: GitHubRepoBranchApi
+): GitHubRepoBranchModel => ({
+  name: from.name,
 });

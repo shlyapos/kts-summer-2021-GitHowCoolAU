@@ -1,3 +1,3 @@
 export type GitHubGetRepoParams = {
-    login: string
+  login: string;
 };

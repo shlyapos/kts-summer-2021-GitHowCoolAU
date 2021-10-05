@@ -1,3 +1,3 @@
-export { default } from './RepoBranchesStore';
+export { default } from "./RepoBranchesStore";
 
-export * from './types';
+export * from "./types";
