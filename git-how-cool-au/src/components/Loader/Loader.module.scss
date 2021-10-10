@@ -22,7 +22,7 @@
 
     position: sticky;
     top: calc(50% - 40px);
-    left: 50%;
+    left: calc(50% - 40px);
 
     &_wrapper {
         @include square(40px);

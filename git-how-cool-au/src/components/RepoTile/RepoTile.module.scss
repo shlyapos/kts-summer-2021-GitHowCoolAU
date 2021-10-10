@@ -1,10 +1,9 @@
 @import 'styles/variables';
 
 .repo_tile {
-    @include shape(357px, 104px, 6px);
+    @include shape(507px, 104px, 32px);
 
     background-color: $colorBackground;
-    border: 1px solid $colorBorder;
     box-sizing: border-box;
     cursor: pointer;
 
@@ -15,4 +14,5 @@
 
 .repo_tile:hover {
     box-shadow: 0px 2px 6px $colorBorderHoverAccent;
+    background-color: #FAFAFA;
 }

@@ -10,6 +10,7 @@ import {
 import { Meta } from "utils/meta";
 import { observer } from "mobx-react-lite";
 import { useHistory } from "react-router";
+import styles from "./RepoSearchPage.module.scss";
 
 import RepoBranchesDrawer from "./components/RepoBranchesDrawer";
 import RepoList from "./components/RepoList";
@@ -52,12 +53,23 @@ const RepoSearchPage: React.FC = () => {
   }, [history]);
 
   return (
-    <div>
+    <div className={styles.container}>
+      <h1 className={styles.header}>
+        GitHow <span>Cool</span> Are <span>You</span>
+      </h1>
+
+      <p className={styles.slogan}>
+        You can <span>find yourself</span> or 
+        your <span>friends</span> and 
+        see <span>how cool you are!</span>
+      </p>
+
       {repoListStore && repoListStore.meta === Meta.loading && (
         <Loader>
           <LoadIcon />
         </Loader>
       )}
+      
       {repoListStore && repoListStore.meta === Meta.error ? (
         <ErrorWindow />
       ) : (

@@ -1,13 +1,13 @@
 @import 'styles/variables';
 
 .search_input {
-    @include shape(295px, 50px, 6px);
+    @include shape(445px, 50px, 40px);
 
-    border: 1px solid $colorBorder;
+    border: none;
     box-sizing: border-box;
     color: $colorDefault;
 
-    padding-left: $spacingUnit3;
+    padding-left: $spacingUnit5;
 }
 
 .search_input::placeholder {

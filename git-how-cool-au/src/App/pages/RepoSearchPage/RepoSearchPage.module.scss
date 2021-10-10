@@ -1,0 +1,41 @@
+@import "styles/variables.scss";
+
+.container {
+  width: 700px;
+  margin: 0 auto;
+
+  background-color: $colorPageBackground;
+}
+
+.header {
+  @include text-header(48px, center, black);
+
+  align-items: center;
+  display: flex;
+
+  margin: $spacingUnit8 auto $spacingUnit5;
+
+  width: 450px;
+  height: 56px;
+
+  justify-content: space-between;
+}
+
+.slogan {
+  @include text-simple(18px, center, black);
+  
+  align-items: center;
+  display: flex;
+
+  margin: 0 auto;
+
+  width: 507px;
+  height: 20px;
+  
+  justify-content: space-between;
+}
+
+.header span,
+.slogan span {
+  color: $colorAccent;
+}

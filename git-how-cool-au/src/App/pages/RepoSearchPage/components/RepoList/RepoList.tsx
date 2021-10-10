@@ -29,7 +29,7 @@ const RepoList: React.FC<RepoListProps> = ({
     <div className={styles.repo_search_list}>
       <SearchInput
         value={inputValue}
-        placeholder="Введите автора или организацию"
+        placeholder="Введите автора или организацию..."
         onChange={onChangeInput}
       />
 

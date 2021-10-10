@@ -10,6 +10,7 @@ $colorStarAccent: #ff9432;
 $colorLinkHover: #208fbf;
 $colorDisable: #f9f9f9;
 $colorError: #e45a5a;
+$colorPageBackground: #EDF5F8;
 
 /* === Spacing === */
 $spacingUnit1: 4px;
@@ -17,6 +18,7 @@ $spacingUnit2: 8px;
 $spacingUnit3: 12px;
 $spacingUnit4: 16px;
 $spacingUnit5: 20px;
+$spacingUnit8: 32px;
 
 @mixin square($size, $border-radius: none) {
   width: $size;
