@@ -25,7 +25,7 @@ const plugins = [
 
 const getSettingsForStyle = (withModules = false) => {
     return [
-        MiniCssExtractPlugin.loader,
+        isProd ? MiniCssExtractPlugin.loader : "style-loader",
         !withModules ? "css-loader" : {
             loader: "css-loader",
             options: {
@@ -57,6 +57,7 @@ module.exports = {
         filename: "bundle.js"
     },
     devServer: {
+        historyApiFallback: true,
         host: "127.0.0.1",
         port: 8800,
         hot: true
