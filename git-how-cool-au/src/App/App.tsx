@@ -11,7 +11,7 @@ const App = () => {
   return (
     <div className="App">
       <Switch>
-        <RepoSearchRoute path={"/repos/:owner?/:name?"}>
+        <RepoSearchRoute>
           <RepoSearchPage />
         </RepoSearchRoute>
         <Redirect to="/repos" />
