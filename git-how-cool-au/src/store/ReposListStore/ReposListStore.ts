@@ -48,7 +48,7 @@ export default class ReposListStore implements ILocalStore {
       isAllLoaded: computed,
 
       updateList: action,
-      destroy: action,
+      reset: action,
     });
   }
 
@@ -115,11 +115,15 @@ export default class ReposListStore implements ILocalStore {
     }
   );
 
-  destroy(): void {
+  reset(): void {
     this._list = getInitialCollectionModel();
     this._page = 1;
     this._isAllLoaded = false;
 
     this._qpReaction();
+  }
+
+  destroy(): void {
+    this.reset();
   }
 }

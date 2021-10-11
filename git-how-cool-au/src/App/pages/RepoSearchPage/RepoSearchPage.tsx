@@ -28,7 +28,7 @@ const RepoSearchPage: React.FC = () => {
       setInputValue(e.target.value);
 
       if (repoListStore && repoListStore.list.length !== 0)
-        repoListStore.destroy();
+        repoListStore.reset();
     },
     [repoListStore]
   );

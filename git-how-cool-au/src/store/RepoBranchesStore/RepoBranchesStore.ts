@@ -32,7 +32,7 @@ export default class RepoBranchesStore implements ILocalStore {
       _meta: observable,
 
       updateBranchList: action,
-      destroy: action,
+      reset: action
     });
   }
 
@@ -84,7 +84,11 @@ export default class RepoBranchesStore implements ILocalStore {
     });
   }
 
-  destroy(): void {
+  reset(): void {
     this._list = getInitialCollectionModel();
+  }
+
+  destroy(): void {
+    this.reset();
   }
 }
