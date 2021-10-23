@@ -1,14 +1,16 @@
 /* === Colors === */
-$colorBackground: #FFFFFF;
-$colorBorder: #D9D9D9;
+$colorBackground: #ffffff;
+$colorBorder: #d9d9d9;
 $colorBorderHoverAccent: rgba(182, 182, 182, 0.25);
 $colorDefault: #000000;
-$colorHint: #7E7E7E;
-$colorAccent: #FF5555;
-$colorAccentHover: #FD8686;
-$colorStarAccent: #FF9432;
-$colorLinkHover: #208FBF;
-$colorDisable: #F9F9F9;
+$colorHint: #7e7e7e;
+$colorAccent: #ff5555;
+$colorAccentHover: #fd8686;
+$colorStarAccent: #ff9432;
+$colorLinkHover: #208fbf;
+$colorDisable: #f9f9f9;
+$colorError: #e45a5a;
+$colorPageBackground: #EDF5F8;
 
 /* === Spacing === */
 $spacingUnit1: 4px;
@@ -16,37 +18,38 @@ $spacingUnit2: 8px;
 $spacingUnit3: 12px;
 $spacingUnit4: 16px;
 $spacingUnit5: 20px;
+$spacingUnit8: 32px;
 
-@mixin sqare($size, $border-radius: none) {
-    width: $size;
-    height: $size;
+@mixin square($size, $border-radius: none) {
+  width: $size;
+  height: $size;
 
-    @if ($border-radius !=none) {
-        border-radius: $border-radius;
-    }
+  @if ($border-radius !=none) {
+    border-radius: $border-radius;
+  }
 }
 
 @mixin shape($width, $height, $border-radius: none) {
-    width: $width;
-    height: $height;
+  width: $width;
+  height: $height;
 
-    @if ($border-radius !=none) {
-        border-radius: $border-radius;
-    }
+  @if ($border-radius !=none) {
+    border-radius: $border-radius;
+  }
 }
 
 @mixin text-header($font-size: 20px, $align: left, $color: $colorDefault) {
-    font-weight: 700;
-    margin: 0;
-    font-size: $font-size;
-    color: $color;
-    text-align: $align;
+  font-weight: 700;
+  margin: 0;
+  font-size: $font-size;
+  color: $color;
+  text-align: $align;
 }
 
 @mixin text-simple($font-size: 14px, $align: left, $color: $colorHint) {
-    font-weight: 400;
-    margin: 0;
-    font-size: $font-size;
-    color: $color;
-    text-align: $align;
+  font-weight: 400;
+  margin: 0;
+  font-size: $font-size;
+  color: $color;
+  text-align: $align;
 }

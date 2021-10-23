@@ -1,106 +1,96 @@
 import React from "react";
 
-import Loader from "@components/Loader";
-import LoadIcon from "@components/LoadIcon";
-import { RepoListProvider } from "@config/contexts/RepoListContext";
-import { RepoListItem } from "@config/contexts/RepoListContext/types";
-import { gitHubApp } from "@root/root";
-import { ApiResponse, ResponseError } from "@shared/store/ApiStore";
-import { formatDate } from "@utils/DateProcessing"
-import { useHistory } from "react-router-dom";
+import ErrorWindow from "components/ErrorWindow";
+import Loader from "components/Loader";
+import LoadIcon from "components/LoadIcon";
+import {
+  RepoListContext,
+  useRepoListContextData,
+} from "config/contexts/RepoListContext";
+import { Meta } from "utils/meta";
+import { observer } from "mobx-react-lite";
+import { useHistory } from "react-router";
+import styles from "./RepoSearchPage.module.scss";
 
-import RepoBranchesDrawer from "./components/RepoBranchesDrawer/index";
+import RepoBranchesDrawer from "./components/RepoBranchesDrawer";
 import RepoList from "./components/RepoList";
-import { RepoResponse } from "./types";
 
 const RepoSearchPage: React.FC = () => {
-    const stepPerPage = 10;
+  const history = useHistory();
 
-    const history = useHistory();
+  const { repoListStore } = useRepoListContextData();
 
-    const [currentInputValue, setInputValue] = React.useState('');
-    const [isLoading, setIsLoading] = React.useState(false);
-    const [repoList, setRepoList] = React.useState<null | RepoListItem[]>(null);
-    const [page, setPage] = React.useState(1);
-    const [isAllLoad, setIsAllLoad] = React.useState(false);
+  const [currentInputValue, setInputValue] = React.useState("");
+  const [chosenRepo, setChosenRepo] = React.useState(false);
 
-    const [chosenRepo, setChosenRepo] = React.useState(false);
+  const onChangeInputHandler = React.useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      setInputValue(e.target.value);
 
-    const fetchRepos = async () => {
-        if (!currentInputValue) return;
+      if (repoListStore && repoListStore.list.length !== 0)
+        repoListStore.reset();
+    },
+    [repoListStore]
+  );
 
-        setIsLoading(true);
-
-        const response: ApiResponse<RepoResponse[], ResponseError> = await gitHubApp.getRepo(currentInputValue, page, stepPerPage);
-
-        if (response.success) {
-            if (!response.data.length) {
-                setIsAllLoad(true);
-                setIsLoading(false);
-                return;
-            }
-
-            let newRepoList: RepoListItem[] = repoList ? repoList : [];
-
-            setRepoList(newRepoList.concat(
-                response.data.map((item) => {
-                    return {
-                        id: item.id,
-                        props: {
-                            name: item.name,
-                            owner: item.owner.login,
-                            ownerUrl: item.owner.html_url,
-                            avatarUrl: item.owner.avatar_url,
-                            stars: item.stargazers_count,
-                            update: formatDate(item.updated_at)
-                        }
-                    }
-                })
-            ));
-
-            setPage(page + 1);
-        }
-        else {
-            alert(response.data.message);
-        }
-
-        setIsLoading(false);
+  const searchOnClick = React.useCallback(async () => {
+    if (repoListStore && currentInputValue) {
+      await repoListStore.updateList({ login: currentInputValue });
     }
+  }, [repoListStore, currentInputValue]);
 
-    // Отслеживание изменений в поле ввода, при изменении содержимого очищается список репозиториев
-    const onChangeInputHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setInputValue(e.target.value);
+  const redirectToDrawer = React.useCallback(
+    (login: string, repo: string) => {
+      history.push(`/repos/${login}/${repo}`);
+      setChosenRepo(true);
+    },
+    [history]
+  );
 
-        if (repoList) {
-            setPage(1);
-            setIsAllLoad(false);
-            setRepoList(null);
-        }
-    };
+  const redirectFromDrawer = React.useCallback(() => {
+    history.push("/repos");
+    setChosenRepo(false);
+  }, [history]);
 
-    // События для chosenRepo
-    const onClickRepoTileHandler = (owner: string, name: string) => {
-        history.push(`/repos/${owner}/${name}`);
-        setChosenRepo(true);
-    }
+  return (
+    <div className={styles.container}>
+      <h1 className={styles.header}>
+        GitHow <span>Cool</span> Are <span>You</span>
+      </h1>
 
-    const onCloseRepoBranchesDrawer = () => {
-        history.push('/repos');
-        setChosenRepo(false);
-    }
+      <p className={styles.slogan}>
+        You can <span>find yourself</span> or 
+        your <span>friends</span> and 
+        see <span>how cool you are!</span>
+      </p>
 
-    return (
-        <RepoListProvider value={{ list: repoList, isLoading: isLoading, load: fetchRepos, isAllLoad: isAllLoad }}>
-            {isLoading && <Loader><LoadIcon /></Loader>}
-
+      {repoListStore && repoListStore.meta === Meta.loading && (
+        <Loader>
+          <LoadIcon />
+        </Loader>
+      )}
+      
+      {repoListStore && repoListStore.meta === Meta.error ? (
+        <ErrorWindow />
+      ) : (
+        <RepoListContext.Provider value={{ repoListStore: repoListStore }}>
+          <div>
             <RepoList
-                inputValue={currentInputValue}
-                tileOnClick={onClickRepoTileHandler}
-                onChangeInput={onChangeInputHandler}
+              inputValue={currentInputValue}
+              searchOnClick={searchOnClick}
+              onChangeInput={onChangeInputHandler}
+              tileOnClick={redirectToDrawer}
             />
-            <RepoBranchesDrawer visible={chosenRepo} onClose={onCloseRepoBranchesDrawer} />
-        </RepoListProvider>
-    );
+
+            <RepoBranchesDrawer
+              visible={chosenRepo}
+              onClose={redirectFromDrawer}
+            />
+          </div>
+        </RepoListContext.Provider>
+      )}
+    </div>
+  );
 };
 
-export default RepoSearchPage;
+export default observer(RepoSearchPage);

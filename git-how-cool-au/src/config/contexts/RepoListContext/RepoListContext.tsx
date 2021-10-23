@@ -1,37 +1,36 @@
 import React from "react";
 
-import { gitHubApp } from "@root/root";
-import { ApiResponse, ResponseError } from "@shared/store/ApiStore";
-import { formatDate } from "@utils/DateProcessing";
+import ReposListStore from "store/ReposListStore";
+import { useLocalStore } from "utils/useLocalStore";
 
-import { RepoListItem } from "./types";
-
-type RepoListContext = {
-    list: null | RepoListItem[],
-    isLoading: boolean,
-    isAllLoad: boolean,
-    load: (owner: string) => void
+type RepoListContextData = {
+  repoListStore: undefined | ReposListStore;
 };
 
-
-export type RepoResponse = {
-    id: string,
-    name: string,
-    owner: {
-        login: string,
-        html_url: string,
-        avatar_url: string,
-    },
-    stargazers_count: string,
-    updated_at: string
+const RepoListContextDataDefault: RepoListContextData = {
+  repoListStore: undefined,
 };
 
-const ReposListContext = React.createContext<RepoListContext>({
-    list: null,
-    isLoading: true,
-    load: () => { },
-    isAllLoad: false
-});
+export const useRepoListContextData = (): RepoListContextData => {
+  const [repoListStore] = React.useState(
+    useLocalStore(() => new ReposListStore())
+  );
 
-export const useRepoListContext = () => React.useContext(ReposListContext);
-export const RepoListProvider = ReposListContext.Provider;
+  return React.useMemo(() => ({ repoListStore }), [repoListStore]);
+};
+
+export const RepoListContext = React.createContext<RepoListContextData>(
+  RepoListContextDataDefault
+);
+export const useRepoListContext = () => React.useContext(RepoListContext);
+
+export const RepoListContextProvider: React.FC<{ children: React.ReactNode }> =
+  ({ children }) => {
+    const data = useRepoListContextData();
+
+    return (
+      <RepoListContext.Provider value={{ repoListStore: data.repoListStore }}>
+        {children}
+      </RepoListContext.Provider>
+    );
+  };

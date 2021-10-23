@@ -1,4 +1,4 @@
-@import '@styles/variables';
+@import 'styles/variables';
 
 .repo_item {
     display: flex;
@@ -34,6 +34,7 @@
 
 .org_link {
     color: $colorHint;
+    text-decoration: none;
 }
 
 .org_link:hover {
@@ -51,6 +52,8 @@
 }
 
 .rating {
+    @include text-simple($align: left);
+
     margin-top: 0;
     margin-bottom: 0;
     margin-left: $spacingUnit1;
@@ -58,5 +61,6 @@
 }
 
 .update {
+    @include text-simple($align: left);
     margin: 0;
 }

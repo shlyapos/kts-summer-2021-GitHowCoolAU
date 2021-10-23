@@ -1,0 +1,16 @@
+@import "styles/variables";
+
+.error_window {
+  @include shape(200px, 100px, 32px);
+
+  align-items: center;
+  background-color: $colorError;
+  color: white;
+  display: flex;
+
+  position: absolute;
+  z-index: 100;
+  top: calc(50% - 60px);
+  left: calc(50% - 100px);
+  text-align: center;
+}
